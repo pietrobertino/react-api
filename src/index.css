@@ -1,1 +1,41 @@
-@import url("bootstrap")
+@import url("bootstrap");
+
+:root {
+  --main-color: rgb(238, 128, 50);
+  --secondary-color: rgb(35, 144, 195);
+}
+
+header {
+  background-color: var(--main-color);
+}
+
+#men-btn {
+  background-color: var(--main-color);
+  color: white;
+}
+
+#women-btn {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.card {
+  color: white;
+
+  img {
+    height: 60%;
+    width: 60%;
+    object-fit: cover;
+    object-position: center;
+    margin: 0 auto;
+
+  }
+}
+
+.man-card {
+  background-color: var(--main-color);
+}
+
+.woman-card {
+  background-color: var(--secondary-color);
+}
