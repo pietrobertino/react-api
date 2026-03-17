@@ -5,7 +5,11 @@
   --secondary-color: rgb(35, 144, 195);
 }
 
-header {
+#women-header {
+  background-color: var(--secondary-color);
+}
+
+#men-header {
   background-color: var(--main-color);
 }
 

@@ -1,11 +1,10 @@
 import { Button } from "bootstrap";
 import { useState, useEffect } from "react"
 
-export default function AppMain({ url_api_men, url_api_women }) {
+export default function AppMain({ url_api_men, url_api_women, menPage, setMenPage }) {
 
     const [actors, setActors] = useState([]);
     const [actresses, setActresses] = useState([]);
-    const [menPage, setMenPage] = useState(true);
 
     useEffect(() => {
         fetch(url_api_men)
@@ -24,8 +23,16 @@ export default function AppMain({ url_api_men, url_api_women }) {
         <main>
             <div className="container">
                 <div className="text-center mt-5">
-                    <h1>Actors</h1>
-                    <p>List of actors fetched from an API</p>
+                    {menPage ?
+                        <div>
+                            <h1>Actors</h1>
+                            <p>List of actors fetched from an API</p>
+                        </div>
+                        :
+                        <div>
+                            <h1>Actresses</h1>
+                            <p>List of actresses fetched from an API</p>
+                        </div>}
                 </div>
 
                 <div className="text-end">
@@ -50,7 +57,12 @@ export default function AppMain({ url_api_men, url_api_women }) {
                                     <div className=" card-subtitle fst-italic mt-1">{actor.birth_year} {actor.nationality}</div>
                                     <div className=" card-body">
                                         <p className="card-text">{actor.biography}</p>
-                                        <div className=" card-text fst-italic"><span className="fw-bold ">Awards:</span><br />{actor.awards} </div>
+                                        <div className=" card-text fst-italic mb-3"><span className="fw-bold ">Awards:</span><br />{actor.awards} </div>
+                                        <div className=" card-text fst-italic"><span className="fw-bold ">Known for:</span><br />
+                                            {actor.known_for.map((movie, index) => (
+                                                <span key={index}> {movie} {(index < actor.known_for.length - 1) && ","}</span>
+                                            ))}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -64,7 +76,12 @@ export default function AppMain({ url_api_men, url_api_women }) {
                                     <div className=" card-subtitle fst-italic mt-1">{actor.birth_year} {actor.nationality}</div>
                                     <div className=" card-body">
                                         <p className="card-text">{actor.biography}</p>
-                                        <div className=" card-text fst-italic"><span className="fw-bold ">Awards:</span><br />{actor.awards} </div>
+                                        <div className=" card-text fst-italic mb-3"><span className="fw-bold ">Awards:</span><br />{actor.awards} </div>
+                                        <div className=" card-text fst-italic"><span className="fw-bold ">Known for:</span><br />
+                                            {actor.most_famous_movies.map((movie, index) => (
+                                                <span key={index}> {movie} {(index < actor.most_famous_movies.length - 1) && ","}</span>
+                                            ))}
+                                        </div>
                                     </div>
                                 </div>
                             </div>

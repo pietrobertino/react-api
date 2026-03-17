@@ -1,13 +1,22 @@
 import AppHeader from "./components/AppHeader";
 import AppMain from "./components/AppMain";
+import { useState } from "react";
 
 
 function App() {
 
+  const [menPage, setMenPage] = useState(true);
+
+
   return (
     <>
-      <AppHeader />
-      <AppMain url_api_men="https://lanciweb.github.io/demo/api/actors/" url_api_women="https://lanciweb.github.io/demo/api/actresses/" />
+      <AppHeader menPage={menPage} />
+      <AppMain
+        url_api_men="https://lanciweb.github.io/demo/api/actors/"
+        url_api_women="https://lanciweb.github.io/demo/api/actresses/"
+        menPage={menPage}
+        setMenPage={setMenPage} />
+
     </>
   )
 }
