@@ -1,5 +1,14 @@
+import { useEffect } from "react"
+
 export default function AppMain({ url_api }) {
 
+    useEffect(() => {
+        fetch(url_api)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+            })
+    }, [])
 
     return (
         <main>
@@ -9,9 +18,7 @@ export default function AppMain({ url_api }) {
                     <p>List of actresses fetched from an API</p>
                 </div>
 
-                <div id="cards">
 
-                </div>
             </div>
         </main>
     )
