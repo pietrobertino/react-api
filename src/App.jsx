@@ -4,12 +4,10 @@ import AppMain from "./components/AppMain";
 
 function App() {
 
-  const url_api = "https://lanciweb.github.io/demo/api/actresses/";
-
   return (
     <>
       <AppHeader />
-      <AppMain url_api={url_api} />
+      <AppMain url_api_men="https://lanciweb.github.io/demo/api/actors/" url_api_women="https://lanciweb.github.io/demo/api/actresses/" />
     </>
   )
 }

@@ -1,15 +1,20 @@
 import { useState, useEffect } from "react"
 
-export default function AppMain({ url_api }) {
+export default function AppMain({ url_api_men, url_api_women }) {
 
     const [actors, setActors] = useState([]);
+    const [actresses, setActresses] = useState([]);
 
     useEffect(() => {
-        fetch(url_api)
+        fetch(url_api_men)
             .then(response => response.json())
             .then(data => {
-                console.log(data)
                 setActors(data)
+            })
+        fetch(url_api_women)
+            .then(response => response.json())
+            .then(data => {
+                setActresses(data)
             })
     }, [])
 
